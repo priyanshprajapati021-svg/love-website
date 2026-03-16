@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Special Girl ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
+color:white;
+overflow:hidden;
+}
+
+.container{
+margin-top:100px;
+padding:20px;
+}
+
+input{
+padding:12px;
+font-size:16px;
+border-radius:8px;
+border:none;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+margin:10px;
+cursor:pointer;
+}
+
+#yes{
+background:red;
+color:white;
+}
+
+#no{
+background:white;
+color:red;
+position:absolute;
+}
+
+img{
+width:320px;
+border-radius:20px;
+margin-top:20px;
+}
+
+/* hearts */
+
+.heart{
+position:absolute;
+color:red;
+animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* fireworks */
+
+.firework{
+position:absolute;
+font-size:30px;
+animation:boom 1s ease-out forwards;
+}
+
+@keyframes boom{
+0%{transform:scale(0);}
+100%{transform:scale(3);opacity:0;}
+}
+
+/* love animation */
+
+.love{
+font-size:60px;
+animation:love 1s infinite alternate;
+}
+
+@keyframes love{
+0%{transform:scale(1);}
+100%{transform:scale(1.3);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<div class="container">
+
+<!-- PAGE 1 -->
+
+<div id="step1">
+
+<h1>Hi Beautiful ❤️</h1>
+
+<p>Enter your name</p>
+
+<input type="text" id="name">
+
+<br><br>
+
+<button onclick="next()">Continue</button>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div id="step2" style="display:none;">
+
+<h2 id="msg"></h2>
+
+<p>
+You make my world brighter 🌎  
+Your smile makes my day better ☀️  
+And my heart beats faster whenever I see you 💓
+</p>
+
+<h2>Will you be mine forever? 💍</h2>
+
+<button id="yes" onclick="love()">YES ❤️</button>
+
+<button id="no" onmouseover="run()">NO</button>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div id="step3" style="display:none;">
+
+<h1>Yay! I Love You ❤️</h1>
+
+<p>You just made me the happiest person alive.</p>
+
+<img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7">
+
+<br><br>
+
+<button onclick="final()">Final Surprise 🎁</button>
+
+</div>
+
+<!-- PAGE 4 FINAL -->
+
+<div id="step4" style="display:none;">
+
+<h1 class="love">❤️ I LOVE YOU ❤️</h1>
+
+<h2>Forever and Always 💍</h2>
+
+</div>
+
+</div>
+
+<script>
+
+function next(){
+
+let name=document.getElementById("name").value
+
+document.getElementById("step1").style.display="none"
+
+document.getElementById("step2").style.display="block"
+
+document.getElementById("msg").innerText="Hello "+name+" ❤️"
+
+}
+
+function love(){
+
+document.getElementById("step2").style.display="none"
+
+document.getElementById("step3").style.display="block"
+
+fireworks()
+
+}
+
+function final(){
+
+document.getElementById("step3").style.display="none"
+
+document.getElementById("step4").style.display="block"
+
+}
+
+function run(){
+
+let x=Math.random()*window.innerWidth
+
+let y=Math.random()*window.innerHeight
+
+let btn=document.getElementById("no")
+
+btn.style.left=x+"px"
+
+btn.style.top=y+"px"
+
+}
+
+/* hearts */
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+
+heart.className="heart"
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"vw"
+
+heart.style.fontSize=(Math.random()*20+10)+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>{heart.remove()},5000)
+
+},300)
+
+/* fireworks */
+
+function fireworks(){
+
+setInterval(()=>{
+
+let fw=document.createElement("div")
+
+fw.className="firework"
+
+fw.innerHTML="✨"
+
+fw.style.left=Math.random()*100+"vw"
+
+fw.style.top=Math.random()*100+"vh"
+
+document.body.appendChild(fw)
+
+setTimeout(()=>{fw.remove()},1000)
+
+},200)
+
+}
+
+</script>
+
+</body>
+</html>
